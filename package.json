@@ -1,0 +1,29 @@
+{
+  "name": "replica-energia-sustentavel",
+  "version": "1.0.0",
+  "description": "Réplica standalone da página 'Energia Sustentável' da Pilot Pen",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -c-1 -o",
+    "serve": "npx http-server -p 8080 -c-1",
+    "build": "echo 'Build complete - static site'",
+    "dev": "npx http-server -p 8080 -c-1 --cors"
+  },
+  "keywords": [
+    "pilot-pen",
+    "energia-sustentavel",
+    "replica",
+    "html",
+    "css",
+    "javascript",
+    "gsap"
+  ],
+  "author": "Pilot Pen",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
