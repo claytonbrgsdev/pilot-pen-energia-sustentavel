@@ -8,6 +8,8 @@ html {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 *,
@@ -30,6 +32,8 @@ body {
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
@@ -51,7 +55,7 @@ html, body {
 
 .page-container {
     width: 100%;
-    padding: 80px 0;
+    padding: 0;
 }
 
 .page-content {
@@ -856,41 +860,145 @@ p a, p a:visited {
 .capa-energiasustentavel {
     position: relative;
     width: 100%;
-    height: calc(100vh - 250px) !important;
+    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    /* Propriedades para efeitos visuais da transição */
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+    /* Ajuste automático: o movimento suave da navbar é imperceptível */
+    top: 0;
+    transition: transform 0.25s ease;
+}
+
+/* Efeitos adicionais para a transição criativa da capa */
+.capa-energiasustentavel img {
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de hover sutil na imagem da capa */
+.capa-energiasustentavel:hover img {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Estado quando navbar está colapsada */
+.site-header.navbar-collapsed ~ .page-container .capa-energiasustentavel {
+    transform: translateY(-65px);
+    transition: transform 0.25s ease;
+}
+
+/* Estado quando navbar está expandida */
+.site-header.navbar-expanded ~ .page-container .capa-energiasustentavel {
+    transform: translateY(0);
+    transition: transform 0.25s ease;
+}
+
+/* Efeito de entrada dramática para a seção 1 */
+.energiasustentavel-section-1 {
+    will-change: opacity, transform;
+    transition: all 0.4s ease;
+}
+
+/* Quando a capa está quase desaparecendo, a seção 1 ganha destaque */
+.capa-energiasustentavel[style*="opacity: 0.1"] ~ .energiasustentavel-section-1 {
+    transform: translateY(0) scale(1.02);
+    opacity: 1;
+    filter: brightness(1.1) saturate(1.1);
+    transition: all 0.6s ease;
 }
 
 @media screen and (max-width: 720px) {
     .capa-energiasustentavel {
         margin-bottom: 50px;
-        height: calc(60vh - 250px) !important;
+        height: 100vh !important;
+        min-height: 100vh;
     }
 
-    .capa-energiasustentavel img {
-        position: relative;
-        width: 100%;
+    .capa-energiasustentavel .capa-image {
+        max-width: 90%;
+        max-height: 70vh;
+    }
+
+    .scroll-icon {
+        bottom: 20px;
+    }
+
+    .scroll-icon img {
+        width: 50px;
+    }
+
+    .scroll-icon p {
+        font-size: 12px;
+    }
+
+    /* Seção 1 responsiva mobile */
+    .energiasustentavel-section-1 {
+        height: calc(100vh - 100px);
+        min-height: calc(100vh - 100px);
+    }
+
+    .site-header.navbar-collapsed ~ .page-container .energiasustentavel-section-1,
+    .site-header.navbar-expanded ~ .page-container .energiasustentavel-section-1 {
+        height: calc(100vh - 100px);
+        min-height: calc(100vh - 100px);
     }
 }
 
-.capa-energiasustentavel img {
-    max-width: 100%;
+/* Imagem principal da capa */
+.capa-energiasustentavel .capa-image {
+    max-width: 80%;
+    width: auto;
     height: auto;
-    object-fit: cover;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.3s ease;
 }
 
+/* Hover effect na imagem da capa */
+.capa-energiasustentavel:hover .capa-image {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Ícone de scroll da capa */
 .scroll-icon {
-    position: relative;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
+    z-index: 10;
 }
 
-.scroll-icon > img {
+.scroll-icon img {
+    width: 60px;
     height: auto;
-    width: 50px;
+    display: block;
+    margin: 0 auto 10px;
 }
+
+.scroll-icon p {
+    color: #333;
+    font-family: 'Frutiger Light', 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0;
+}
+
 
 .scroll-icon > p {
     font-size: 14px;
@@ -903,6 +1011,7 @@ p a, p a:visited {
     position: relative;
     margin: 0 auto;
     background: #fff;
+    border: 2px solid #009dff;
 }
 
 @media screen and (max-width: 720px) {
@@ -912,11 +1021,49 @@ p a, p a:visited {
     }
 }
 
-.energiasustentavel-section-1,
+/* Seção 1 com altura dinâmica baseada no estado da navbar */
+.energiasustentavel-section-1 {
+    position: relative;
+    width: 100%;
+    /* Altura inicial - será ajustada dinamicamente pelo JavaScript */
+    height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    transition: height 0.25s ease, min-height 0.25s ease;
+    will-change: transform, opacity;
+    /* Garantir que ocupe o espaço disponível perfeitamente */
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+/* Estado quando navbar está colapsada */
+.site-header.navbar-collapsed ~ .page-container .energiasustentavel-section-1 {
+    height: calc(100vh - 135px);
+    min-height: calc(100vh - 135px);
+}
+
+/* Estado quando navbar está expandida */
+.site-header.navbar-expanded ~ .page-container .energiasustentavel-section-1 {
+    height: calc(100vh - 200px);
+    min-height: calc(100vh - 200px);
+}
+
+/* Demais seções mantêm altura padrão */
 .energiasustentavel-section-2,
 .energiasustentavel-section-3,
 .energiasustentavel-section-4 {
     position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .es-s1-001, .es-s1-002, .es-s1-003, .es-s1-004, .es-s1-005, .es-s1-006, .es-s1-007,

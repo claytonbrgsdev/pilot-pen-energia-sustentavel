@@ -4,18 +4,77 @@ document.addEventListener('DOMContentLoaded', function() {
         // Registrar ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animação da capa
-        gsap.to(".capa-energiasustentavel", {
-            opacity: 0,
-            ease: "none",
+        // Animação da capa - EFEITO CRIATIVO DE TRANSIÇÃO PARA SEÇÃO 1 (MAIS RÁPIDA)
+        const capaTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: ".capa-energiasustentavel",
                 start: "top-=200 top",
-                end: "bottom top",
+                end: "bottom-=120 top", // Reduziu a duração total da animação
                 pin: true,
-                scrub: true
+                scrub: 0.8, // Reduziu o scrub para resposta mais rápida
+                // Callback para controlar elementos durante a transição
+                onUpdate: function(self) {
+                    const progress = self.progress;
+                    const capa = document.querySelector('.capa-energiasustentavel');
+                    const secao1 = document.querySelector('.energiasustentavel-section-1');
+                    const capaImg = capa.querySelector('img');
+
+                    // Efeitos progressivos na capa (MAIS RÁPIDOS)
+                    if (progress < 0.2) {
+                        // Primeira fase: movimento sutil para cima (MAIS RÁPIDO)
+                        gsap.set(capa, { y: progress * -40 });
+                    } else if (progress < 0.4) {
+                        // Segunda fase: redução de escala e transparência (MAIS RÁPIDA)
+                        const scaleProgress = (progress - 0.2) / 0.2;
+                        gsap.set(capa, {
+                            scale: 1 - (scaleProgress * 0.3),
+                            opacity: 1 - (scaleProgress * 0.7), // Fade out mais rápido
+                            y: -40 - (scaleProgress * 30)
+                        });
+                    } else if (progress < 0.7) {
+                        // Terceira fase: blur e preparação para transição (MAIS RÁPIDA)
+                        const transitionProgress = (progress - 0.4) / 0.3;
+                        gsap.set(capa, {
+                            scale: 0.7 - (transitionProgress * 0.2),
+                            opacity: 0.3 - (transitionProgress * 0.2), // Opacity extremamente breve
+                            y: -70 - (transitionProgress * 30),
+                            filter: `blur(${transitionProgress * 4}px)`
+                        });
+
+                        // Prepara a seção 1 para entrar (MAIS RÁPIDA)
+                        if (secao1) {
+                            secao1.style.opacity = Math.min(1, transitionProgress * 3); // Aparece mais rápido
+                            secao1.style.transform = `translateY(${(1 - transitionProgress) * -80}px)`;
+                        }
+                    } else {
+                        // Última fase: capa desaparece rapidamente, seção 1 toma o controle
+                        gsap.set(capa, {
+                            scale: 0.5,
+                            opacity: 0, // Opacity zero no final
+                            y: -100,
+                            filter: "blur(8px)"
+                        });
+
+                        if (secao1) {
+                            secao1.style.opacity = "1";
+                            secao1.style.transform = "translateY(0)";
+                        }
+                    }
+                }
             }
         });
+
+        // Adiciona animações específicas para elementos da capa
+        capaTimeline
+            .to(".capa-energiasustentavel img", {
+                scale: 1.1,
+                ease: "power1.inOut"
+            }, 0)
+            .to(".scroll-icon", {
+                opacity: 0,
+                y: -20,
+                ease: "power2.in"
+            }, 0.2);
 
         // === SEÇÃO 1 ===
         // Texto 1
@@ -236,10 +295,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 const logoHeader = document.querySelector('.logo-header');
                 const navLinks = document.querySelectorAll('.nav-bar > ul > li > a');
                 const subMenus = document.querySelectorAll('ul.sub-menu');
+                const capaEnergia = document.querySelector('.capa-energiasustentavel');
 
                 if (header) {
                     header.style.height = '135px';
                     header.style.top = '-65px';
+                    header.classList.remove('navbar-expanded');
+                    header.classList.add('navbar-collapsed');
                 }
 
                 if (bottomHeader) {
@@ -258,8 +320,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     menu.style.top = '69px';
                 });
 
+                // CAPA ACOMPANHA O MOVIMENTO DA NAVBAR via CSS classes
+
                 go = false;
-                console.log('📉 Navbar colapsada (scroll > 20px)');
+                console.log('📉 Navbar colapsada (scroll > 20px) - Capa ajustada');
 
             } else if (scrollTop < 20 && !go) {
                 // SCROLL PARA CIMA - HEADER EXPANDIDO
@@ -268,10 +332,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 const logoHeader = document.querySelector('.logo-header');
                 const navLinks = document.querySelectorAll('.nav-bar > ul > li > a');
                 const subMenus = document.querySelectorAll('ul.sub-menu');
+                const capaEnergia = document.querySelector('.capa-energiasustentavel');
 
                 if (header) {
                     header.style.height = '200px';
                     header.style.top = '0';
+                    header.classList.remove('navbar-collapsed');
+                    header.classList.add('navbar-expanded');
                 }
 
                 if (bottomHeader) {
@@ -290,14 +357,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     menu.style.top = '73px';
                 });
 
+                // CAPA VOLTA À POSIÇÃO ORIGINAL via CSS classes
+
                 go = true;
-                console.log('📈 Navbar expandida (scroll < 20px)');
+                console.log('📈 Navbar expandida (scroll < 20px) - Capa restaurada');
             }
         });
     }
 
     // Inicializar função da navbar
     if (document.querySelector('.site-header')) {
+        // Configurar estado inicial da navbar
+        const header = document.querySelector('.site-header');
+        header.classList.add('navbar-expanded');
+
         retractHeaderScroll();
         console.log('✅ Navbar behavior initialized (pin/collapse corrigido)');
     } else {

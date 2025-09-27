@@ -6,7 +6,7 @@
     <meta name="description" content="Estabelecida no Brasil desde 1954, a Pilot Pen do Brasil, com a matriz situada no Estado de São Paulo. Têm em 60 anos dedicados ao mercado brasileiro, características inovadoras em design, compromisso com qualidade e a busca incessante pela satisfação de nossos consumidores.">
     <meta name="keywords" content="pilot, pilot pen, caneta, canetas, marcador, marcadores, qualidade, hidrográfica, hidrográficas, almofada, apagador, caneta tinteiro, carga, esferográfica, lapiseira">
 
-    <title>Energia Sustentável - Pilot Pen</title>
+    <title>Energia Sustentável - Pilot Pen (DEV)</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
@@ -61,6 +61,67 @@
             src: local('☺'), url('fonts/moon-flower-bold.woff') format('woff'), url('fonts/moon-flower-bold.ttf') format('truetype'), url('fonts/moon-flower-bold.svg') format('svg');
             font-weight: normal;
             font-style: normal;
+        }
+
+        /* Indicadores Visuais para Desenvolvimento */
+        .capa-energiasustentavel {
+            border: 5px solid #ff6b6b !important;
+            background: rgba(255, 107, 107, 0.1) !important;
+        }
+
+        .energiasustentavel-section-1 {
+            border: 5px solid #4ecdc4 !important;
+            background: rgba(78, 205, 196, 0.1) !important;
+        }
+
+        .energiasustentavel-section-2 {
+            border: 5px solid #45b7d1 !important;
+            background: rgba(69, 183, 209, 0.1) !important;
+        }
+
+        .energiasustentavel-section-3 {
+            border: 5px solid #96ceb4 !important;
+            background: rgba(150, 206, 180, 0.1) !important;
+        }
+
+        .energiasustentavel-section-4 {
+            border: 5px solid #feca57 !important;
+            background: rgba(254, 202, 87, 0.1) !important;
+        }
+
+        /* Labels das Seções */
+        .section-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .capa-energiasustentavel .section-label {
+            background: #ff6b6b;
+        }
+
+        .energiasustentavel-section-1 .section-label {
+            background: #4ecdc4;
+        }
+
+        .energiasustentavel-section-2 .section-label {
+            background: #45b7d1;
+        }
+
+        .energiasustentavel-section-3 .section-label {
+            background: #96ceb4;
+        }
+
+        .energiasustentavel-section-4 .section-label {
+            background: #feca57;
         }
 
     </style>
@@ -161,103 +222,56 @@
             <div class="page-content">
                 <div class="wrapper lp_wrapper_mobile">
 
-                    <!-- Capa -->
+                    <!-- CAPA -->
                     <div class="capa-energiasustentavel" id="capa">
-                        <img src="images/energia-sustentavel/capa-energia-sustentavel.png" alt="Capa Energia Sustentável">
-
+                        <div class="section-label">CAPA (capa-energiasustentavel)</div>
+                        <img src="images/energia-sustentavel/capa-energia-sustentavel.png" alt="Energia Sustentável - Pilot Pen" class="capa-image">
+                        
                         <div class="scroll-icon">
                             <img src="images/begreen/scroll-down.gif" alt="Scroll Down">
                             <p>Role <br>a página</p>
                         </div>
                     </div>
 
-                    <!-- Conteúdo Principal -->
-                    <div class="page-energiasustentavel">
-                        <!-- Seção 1: Nosso Compromisso com o Futuro -->
-                        <div class="energiasustentavel-section-1" id="section1">
-                            <div class="es-s1-text-1">
-                                <h2 class="alumni-sans-sc">Nosso Compromisso com o Futuro</h2>
-                                <p>
-                                    Em 2019, a fábrica da <strong>Pilot Pen</strong> do Brasil passou a utilizar <br> <strong>100%</strong> de energia proveniente de fontes renováveis. Essa<br> iniciativa reflete o nosso compromisso contínuo com a<br> sustentabilidade e preservação do meio ambiente.
-                                </p>
-                            </div>
-                            <img class="es-s1-001" src="images/energia-sustentavel/s1-001.gif" alt="Globo Pilot" data-speed="0.3">
-
-                            <div class="es-s1-text-2">
-                                <h2 class="alumni-sans-sc">Impacto Ambiental</h2>
-                                <p>
-                                    Por não utilizarmos a energia convencional, de 2019 até 2024, nossa fábrica reduziu a emissão de 427,17 toneladas de CO2 na atmosfera.
-                                </p>
-                                <p class="alumni-sans-sc"><strong>Emissão C0²</strong></p>
-
-                            </div>
-                            <img class="es-s1-006 scale-2" src="images/energia-sustentavel/s1-006.png" alt="Impacto Ambiental" data-speed="-0.2">
-
-                            <img class="es-s1-002" src="images/energia-sustentavel/pilot-globe-1.gif" alt="Globo Animado" data-speed="0.4">
-                            <img class="es-s1-007 scale-1" src="images/energia-sustentavel/s1-007.png" alt="Elemento Decorativo" data-speed="-0.3">
-                            <img class="es-s1-003" src="images/energia-sustentavel/s1-003.png" alt="Elemento Decorativo" data-speed="0.5">
-
-                            <a href="http://www.pilotpen.com.br/produtos/marc-wbma-v-board-master-para-quadro-branco/" class="link-branco" data-speed="-0.1"></a>
-                            <img class="es-s1-004" src="images/energia-sustentavel/s1-004.png" alt="Produto" data-speed="0.2">
-
-
-                            <div class="progress-container es-s1-005" data-speed="-0.4">
-                                <div class="progress-bar"></div>
-                            </div>
+                    <!-- SEÇÃO 1 -->
+                    <div class="energiasustentavel-section-1" id="section1">
+                        <div class="section-label">SEÇÃO 1 (energiasustentavel-section-1)</div>
+                        <div style="padding: 50px; color: #333;">
+                            <h2>Nosso Compromisso com o Futuro</h2>
+                            <p>
+                                Em 2019, a fábrica da <strong>Pilot Pen</strong> do Brasil passou a utilizar <br> <strong>100%</strong> de energia proveniente de fontes renováveis. Essa<br> iniciativa reflete o nosso compromisso contínuo com a<br> sustentabilidade e preservação do meio ambiente.
+                            </p>
                         </div>
+                    </div>
 
-                        <!-- Seção 2: Como a PILOT Compra Energia Renovável? -->
-                        <div class="energiasustentavel-section-2" id="section2">
-                            <div class="es-s2-text-1">
-                                <p>
-                                    Nossa escolha por energia limpa ajuda o<br> planeta a respirar. O impacto equivale ao<br> que 2.990 árvores fariam ao longo de<br> décadas, já que um projeto de reflorestamento dura em média 30 anos.
-                                </p>
-                            </div>
-
-                            <div class="es-s2-text-2">
-                                <h2 class="alumni-sans-sc">Como a PILOT Compra Energia Renovável?</h2>
-                                <p>
-                                    A compra é feita por meio do Mercado Livre de Energia, um<br> ambiente que possibilita a escolha de fornecedores sustentáveis.<br>Isso garante que uma quantidade equivalente de energia limpa seja<br> injetada no sistema elétrico, reduzindo nossa pegada de carbono e<br> incentivando o desenvolvimento de fontes como solar, eólica e<br> biomassa. A distribuição é feita pela concessionária local em<br> Jundiaí-SP, assegurando um fornecimento contínuo e reforçando<br> nosso compromisso sustentável.
-                                </p>
-                            </div>
-
-                            <img class="es-s2-001" src="images/energia-sustentavel/s2-001.gif" alt="Animação" data-speed="0.3">
-                            <img class="es-s2-002" src="images/energia-sustentavel/s2-002.png" alt="Elemento Decorativo" data-speed="-0.2">
-                            <img class="es-s2-003 scale-3" src="images/energia-sustentavel/s2-003.png" alt="Elemento Decorativo" data-speed="0.4">
-                            <img class="es-s2-004" src="images/energia-sustentavel/s2-004.png" alt="Elemento Decorativo" data-speed="-0.3">
-                            <img class="es-s2-005 scale-3" src="images/energia-sustentavel/s2-005.png" alt="Elemento Decorativo" data-speed="0.5">
-                            <img class="es-s2-006 scale-3" src="images/energia-sustentavel/s2-006.png" alt="Elemento Decorativo" data-speed="-0.4">
-                            <img class="es-s2-007 scale-3" src="images/energia-sustentavel/s2-007.png" alt="Elemento Decorativo" data-speed="0.2">
+                    <!-- SEÇÃO 2 -->
+                    <div class="energiasustentavel-section-2" id="section2">
+                        <div class="section-label">SEÇÃO 2 (energiasustentavel-section-2)</div>
+                        <div style="padding: 50px; color: #333;">
+                            <h2>Como a PILOT Compra Energia Renovável?</h2>
+                            <p>
+                                Nossa escolha por energia limpa ajuda o<br> planeta a respirar. O impacto equivale ao<br> que 2.990 árvores fariam ao longo de<br> décadas, já que um projeto de reflorestamento dura em média 30 anos.
+                            </p>
                         </div>
+                    </div>
 
-                        <!-- Seção 3: Fontes de Energia Renovável -->
-                        <div class="energiasustentavel-section-3" id="section3">
-                            <div class="es-s3-text-1">
-                                <h2 class="alumni-sans-sc">Fontes de Energia Renovável</h2>
-                                <p>
-                                    A energia renovável que utilizamos vem de fontes como a hídrica, solar, eólica,<br> biomassa, geotérmica, oceânica e hidrogênio.
-                                </p>
-                            </div>
-
-                            <img class="es-s3-001" src="images/energia-sustentavel/s3-001.gif" alt="Animação Fontes" data-speed="0.3">
-                            <img class="es-s3-002" src="images/energia-sustentavel/s3-002.png" alt="Elemento Decorativo" data-speed="-0.2">
-                            <img class="es-s3-003 floating" src="images/energia-sustentavel/s3-003.png" alt="Elemento Flutuante" data-speed="0.4">
-                            <img class="es-s3-004" src="images/energia-sustentavel/pilot-fontes.png" alt="Fontes Pilot" data-speed="-0.3">
-                            <img class="es-s3-005" src="images/energia-sustentavel/pilot-fontes-mobile.gif" alt="Fontes Mobile" data-speed="0.5">
+                    <!-- SEÇÃO 3 -->
+                    <div class="energiasustentavel-section-3" id="section3">
+                        <div class="section-label">SEÇÃO 3 (energiasustentavel-section-3)</div>
+                        <div style="padding: 50px; color: #333;">
+                            <h2>Fontes de Energia Renovável</h2>
+                            <p>
+                                A energia renovável que utilizamos vem de fontes como a hídrica, solar, eólica,<br> biomassa, geotérmica, oceânica e hidrogênio.
+                            </p>
                         </div>
+                    </div>
 
-                        <!-- Seção 4: Garantia de Energia Renovável -->
-                        <div class="energiasustentavel-section-4" id="section4">
-                            <div class="es-s4-text-1">
-                                <h2 class="alumni-sans-sc">Garantia de Energia Renovável</h2>
-                                <p>A PILOT recebe todo ano um selo e um certificado da COMERC – SINERCONSULT. Ambos são referentes ao ano anterior e são validados pelos procedimentos do<br> programa brasileiro GHG Protocol e cumprem os fundamentos da International<br> Organization for Standardization (ISO).</p>
-                            </div>
-
-                            <img class="es-s4-003 scale-2" src="images/energia-sustentavel/s4-003.png" alt="Certificado" data-speed="-0.2">
-                            <img class="es-s4-001" src="images/energia-sustentavel/s4-001.png" alt="Selo" data-speed="0.3">
-                            <a href="https://drive.google.com/drive/folders/1tlkEMAWeIg7saL28qTdlyL-IOeyXNbXk?usp=sharing" target="_blank" data-speed="-0.1">
-                                <img class="es-s4-002" src="images/energia-sustentavel/s4-002.png" alt="Link Certificado">
-                            </a>
+                    <!-- SEÇÃO 4 -->
+                    <div class="energiasustentavel-section-4" id="section4">
+                        <div class="section-label">SEÇÃO 4 (energiasustentavel-section-4)</div>
+                        <div style="padding: 50px; color: #333;">
+                            <h2>Garantia de Energia Renovável</h2>
+                            <p>A PILOT recebe todo ano um selo e um certificado da COMERC – SINERCONSULT. Ambos são referentes ao ano anterior e são validados pelos procedimentos do<br> programa brasileiro GHG Protocol e cumprem os fundamentos da International<br> Organization for Standardization (ISO).</p>
                         </div>
                     </div>
 
@@ -343,7 +357,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="functions.js"></script>
-    <script src="script.js"></script>
+    <script src="script-dev.js"></script>
 
 </body>
 </html>

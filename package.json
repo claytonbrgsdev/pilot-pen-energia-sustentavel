@@ -7,7 +7,7 @@
     "start": "npx http-server -p 8080 -c-1 -o",
     "serve": "npx http-server -p 8080 -c-1",
     "build": "echo 'Build complete - static site'",
-    "dev": "npx http-server -p 8080 -c-1 --cors"
+    "dev": "npx http-server -p 8080 -c-1 --cors -o /index-dev.html"
   },
   "keywords": [
     "pilot-pen",
