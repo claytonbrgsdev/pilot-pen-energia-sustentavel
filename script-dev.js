@@ -115,41 +115,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function setupCapaPin() {
         const capa = document.querySelector('.capa-energiasustentavel');
+        const capaImage = document.querySelector('.capa-image');
         const header = document.querySelector('.site-header');
         
-        if (!capa || !header) {
-            console.log('❌ Capa ou header não encontrados para pin');
+        if (!capa || !capaImage || !header) {
+            console.log('❌ Capa, imagem da capa ou header não encontrados para pin');
             return;
         }
 
         // Verificar se é mobile - pin só funciona em desktop
         if (window.innerWidth <= 720) {
-            console.log('📱 Mobile detectado - pin da capa desabilitado');
+            console.log('📱 Mobile detectado - pin da imagem da capa desabilitado');
             return;
         }
 
-        // Configurar pin da capa baseado no estado da navbar
+        // Configurar pin apenas da IMAGEM da capa
         function updateCapaPin() {
             const isCollapsed = header.classList.contains('navbar-collapsed');
             const triggerStart = isCollapsed ? 'top+=135px top' : 'top+=200px top';
             
-            // Pin da capa - ela gruda até "acabar"
+            // Pin APENAS da IMAGEM - não da seção inteira
             ScrollTrigger.create({
-                trigger: capa,
+                trigger: capa,              // ← Seção da capa como trigger
                 start: triggerStart,
-                end: 'bottom top',
-                pin: true,
+                end: 'bottom top',          // ← Quando a seção da capa termina
+                pin: capaImage,             // ← Pin APENAS da imagem!
                 pinSpacing: false,
                 scrub: false,
-                id: 'capa-pin',
+                id: 'capa-image-pin',
                 onUpdate: (self) => {
-                    console.log(`📍 Capa pin progress: ${self.progress.toFixed(2)}`);
+                    console.log(`📍 Imagem da capa pin progress: ${self.progress.toFixed(2)}`);
                 },
                 onToggle: (self) => {
                     if (self.isActive) {
-                        console.log('🔒 CAPA PINNED - grudada no topo até acabar');
+                        console.log('🔒 IMAGEM DA CAPA PINNED - apenas imagem grudada, seção flui');
                     } else {
-                        console.log('🔓 CAPA UNPINNED - Seção 1 pode aparecer');
+                        console.log('🔓 IMAGEM DA CAPA UNPINNED - Seção 1 substitui');
                     }
                 },
                 refreshPriority: 1
@@ -174,8 +175,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Configurar pin inicial
         updateCapaPin();
         
-        console.log('📍 Capa pin configurado - gruda até acabar e libera a Seção 1');
+        console.log('📍 Pin da IMAGEM da capa configurado - apenas imagem gruda, seção flui');
         console.log('🎯 Pin start: baseado no estado da navbar (135px/200px)');
+        console.log('💡 Comportamento: seção da capa flui normal, apenas imagem fica pinned');
     }
     
     // Executar configuração da capa
@@ -193,13 +195,14 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('  📄 Seção 4:', document.querySelector('.energiasustentavel-section-4') ? '✅' : '❌');
     console.log('  🧭 Navbar:', document.querySelector('.site-header') ? '✅' : '❌');
 
-    console.log('🎉 DEV - Pin da CAPA implementado!');
+    console.log('🎉 DEV - Pin da IMAGEM da capa implementado!');
     console.log('📋 Status:');
     console.log('  ✅ 5 seções estruturadas com indicadores visuais');
-    console.log('  ✅ CAPA com pin inteligente (gruda até acabar)');
-    console.log('  ✅ Seção 1 com comportamento normal (sem pin)');
-    console.log('  ✅ ScrollTrigger configurado para pin da capa');
+    console.log('  ✅ IMAGEM da capa com pin inteligente (apenas imagem gruda)');
+    console.log('  ✅ Seção da CAPA flui normalmente (não fica pinned)');
+    console.log('  ✅ Seção 1 substitui imagem quando capa termina');
+    console.log('  ✅ ScrollTrigger configurado para pin apenas da imagem');
     console.log('  ✅ Navbar funcional (pin/collapse otimizado)');
-    console.log('🚀 Capa gruda no topo e libera Seção 1 quando acabar!');
+    console.log('🚀 Apenas imagem gruda, seções nunca coexistem!');
 
 });
