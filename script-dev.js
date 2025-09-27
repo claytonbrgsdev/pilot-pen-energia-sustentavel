@@ -110,46 +110,46 @@ document.addEventListener('DOMContentLoaded', function() {
     setupAnimationElements();
 
     // ============================================================================
-    // SEÇÃO 1 - PIN E ALTURA DINÂMICA
+    // CAPA - PIN INTELIGENTE
     // ============================================================================
     
-    function setupSection1Pin() {
-        const section1 = document.querySelector('.energiasustentavel-section-1');
+    function setupCapaPin() {
+        const capa = document.querySelector('.capa-energiasustentavel');
         const header = document.querySelector('.site-header');
         
-        if (!section1 || !header) {
-            console.log('❌ Seção 1 ou header não encontrados para pin');
+        if (!capa || !header) {
+            console.log('❌ Capa ou header não encontrados para pin');
             return;
         }
 
         // Verificar se é mobile - pin só funciona em desktop
         if (window.innerWidth <= 720) {
-            console.log('📱 Mobile detectado - pin da seção 1 desabilitado');
+            console.log('📱 Mobile detectado - pin da capa desabilitado');
             return;
         }
 
-        // Configurar pin da seção 1 baseado no estado da navbar
-        function updateSection1Pin() {
+        // Configurar pin da capa baseado no estado da navbar
+        function updateCapaPin() {
             const isCollapsed = header.classList.contains('navbar-collapsed');
             const triggerStart = isCollapsed ? 'top+=135px top' : 'top+=200px top';
             
-            // Pin da seção 1
+            // Pin da capa - ela gruda até "acabar"
             ScrollTrigger.create({
-                trigger: section1,
+                trigger: capa,
                 start: triggerStart,
                 end: 'bottom top',
                 pin: true,
                 pinSpacing: false,
                 scrub: false,
-                id: 'section1-pin',
+                id: 'capa-pin',
                 onUpdate: (self) => {
-                    console.log(`📍 Section 1 pin progress: ${self.progress.toFixed(2)}`);
+                    console.log(`📍 Capa pin progress: ${self.progress.toFixed(2)}`);
                 },
                 onToggle: (self) => {
                     if (self.isActive) {
-                        console.log('🔒 Seção 1 PINNED - ocupando espaço disponível');
+                        console.log('🔒 CAPA PINNED - grudada no topo até acabar');
                     } else {
-                        console.log('🔓 Seção 1 UNPINNED');
+                        console.log('🔓 CAPA UNPINNED - Seção 1 pode aparecer');
                     }
                 },
                 refreshPriority: 1
@@ -172,14 +172,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Configurar pin inicial
-        updateSection1Pin();
+        updateCapaPin();
         
-        console.log('📍 Seção 1 pin configurado - responde ao estado da navbar');
+        console.log('📍 Capa pin configurado - gruda até acabar e libera a Seção 1');
         console.log('🎯 Pin start: baseado no estado da navbar (135px/200px)');
     }
     
-    // Executar configuração da seção 1
-    setupSection1Pin();
+    // Executar configuração da capa
+    setupCapaPin();
 
     // ============================================================================
     // LOGS DE DEBUG E VERIFICAÇÃO
@@ -193,13 +193,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('  📄 Seção 4:', document.querySelector('.energiasustentavel-section-4') ? '✅' : '❌');
     console.log('  🧭 Navbar:', document.querySelector('.site-header') ? '✅' : '❌');
 
-    console.log('🎉 DEV - Ambiente de desenvolvimento pronto!');
+    console.log('🎉 DEV - Pin da CAPA implementado!');
     console.log('📋 Status:');
     console.log('  ✅ 5 seções estruturadas com indicadores visuais');
-    console.log('  ✅ Bordas coloridas para desenvolvimento');
-    console.log('  ✅ Labels identificadores das seções');
-    console.log('  ✅ ScrollTrigger ZERADO - pronto para implementação');
+    console.log('  ✅ CAPA com pin inteligente (gruda até acabar)');
+    console.log('  ✅ Seção 1 com comportamento normal (sem pin)');
+    console.log('  ✅ ScrollTrigger configurado para pin da capa');
     console.log('  ✅ Navbar funcional (pin/collapse otimizado)');
-    console.log('🚀 Pronto para desenvolvimento de efeitos parallax profissionais!');
+    console.log('🚀 Capa gruda no topo e libera Seção 1 quando acabar!');
 
 });

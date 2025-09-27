@@ -870,6 +870,7 @@ p a, p a:visited {
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
+    /* Otimizado para pin effect */
     /* Propriedades para efeitos visuais da transição */
     transform-origin: center center;
     will-change: transform, opacity, filter;
@@ -940,18 +941,6 @@ p a, p a:visited {
     .scroll-icon p {
         font-size: 12px;
     }
-
-    /* Seção 1 responsiva mobile */
-    .energiasustentavel-section-1 {
-        height: calc(100vh - 100px);
-        min-height: calc(100vh - 100px);
-    }
-
-    .site-header.navbar-collapsed ~ .page-container .energiasustentavel-section-1,
-    .site-header.navbar-expanded ~ .page-container .energiasustentavel-section-1 {
-        height: calc(100vh - 100px);
-        min-height: calc(100vh - 100px);
-    }
 }
 
 /* Imagem principal da capa */
@@ -1021,39 +1010,8 @@ p a, p a:visited {
     }
 }
 
-/* Seção 1 com altura dinâmica baseada no estado da navbar */
-.energiasustentavel-section-1 {
-    position: relative;
-    width: 100%;
-    /* Altura inicial - será ajustada dinamicamente pelo JavaScript */
-    height: calc(100vh - 200px);
-    min-height: calc(100vh - 200px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    transition: height 0.25s ease, min-height 0.25s ease;
-    will-change: transform, opacity;
-    /* Garantir que ocupe o espaço disponível perfeitamente */
-    top: 0;
-    left: 0;
-    z-index: 5;
-}
-
-/* Estado quando navbar está colapsada */
-.site-header.navbar-collapsed ~ .page-container .energiasustentavel-section-1 {
-    height: calc(100vh - 135px);
-    min-height: calc(100vh - 135px);
-}
-
-/* Estado quando navbar está expandida */
-.site-header.navbar-expanded ~ .page-container .energiasustentavel-section-1 {
-    height: calc(100vh - 200px);
-    min-height: calc(100vh - 200px);
-}
-
-/* Demais seções mantêm altura padrão */
+/* Seções com altura padrão - sem pin */
+.energiasustentavel-section-1,
 .energiasustentavel-section-2,
 .energiasustentavel-section-3,
 .energiasustentavel-section-4 {
@@ -1064,6 +1022,8 @@ p a, p a:visited {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
+    will-change: transform, opacity;
 }
 
 .es-s1-001, .es-s1-002, .es-s1-003, .es-s1-004, .es-s1-005, .es-s1-006, .es-s1-007,
